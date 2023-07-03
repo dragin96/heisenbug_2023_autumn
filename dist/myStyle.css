@@ -1,0 +1,52 @@
+.message {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 26px;
+  text-align: left;
+}
+
+.message .sender {
+  font-weight: bold;
+  color: #075e54;
+}
+
+
+.message .content {
+  margin-top: 5px;
+  color: #333;
+}
+
+.message.sent {
+  background-color: #dcf8c6;
+}
+
+
+.message.sent .avatar {
+  margin-right: 10px;
+}
+
+.message.received {
+  background-color: #fff;
+  align-self: flex-start;
+}
+
+
+.message.received .avatar {
+  margin-right: 15px;
+}
+.message .group-msg{
+  display: flex;
+  flex-direction: column;
+}
+.avatar img {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.message-wrapper{
+  display: flex;
+  flex-direction: column;
+}
