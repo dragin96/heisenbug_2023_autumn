@@ -7,12 +7,102 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
+
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/dracula.css">
 		<link rel="stylesheet" href="dist/myStyle.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+		.tree ul {
+			padding-top: 20px;
+			position: relative;
+			transition: all 0.5s;
+			height: 180px;
+			margin: 0;
+			padding: 0;
+			font-size: 12px;
+		}
+
+		.tree ul li {
+			float: left;
+			text-align: center;
+			list-style-type: none;
+			position: relative;
+			padding: 20px 5px 0 5px;
+			transition: all 0.5s;
+		}
+
+		.tree ul li::before, .tree ul li::after {
+			content: '';
+			position: absolute;
+			top: -6px;
+			right: 50%;
+			border-top: 1px solid #ccc;
+			width: 50%;
+			z-index: -1;
+			height: 30px;
+		}
+
+		.tree li::after {
+			right: auto;
+			left: 50%;
+			border-left: 1px solid #ccc;
+		}
+
+		.tree li:only-child::after, .tree li:only-child::before {
+			display: none;
+		}
+
+		.tree li:only-child {
+			padding-top: 0;
+		}
+
+		.tree li:first-child::before, .tree li:last-child::after {
+			border: 0 none;
+		}
+
+		.tree li:last-child::before {
+			border-right: 1px solid #ccc;
+			border-radius: 0 5px 0 0;
+		}
+
+		.tree li:first-child::after {
+			border-radius: 5px 0 0 0;
+		}
+
+		.tree ul ul::before {
+			/* content: ''; */
+			position: absolute;
+			top: 0;
+			left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0;
+			height: 20px;
+		}
+
+		.tree li a {
+			padding: 20px 20px;
+			text-decoration: none;
+			font-size: 17px;
+			display: inline-block;
+			border-radius: 5px;
+			transition: all 0.5s;
+			background: #c8e4f8;
+			color: #000;
+			border: 1px solid #94a0b4;
+			z-index: 4;
+			position: relative;
+		}
+		.reveal a:hover {
+			color: #000;
+		}
+		UL LI {
+			margin-bottom: 15px;
+		}
+
+	</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -28,7 +118,7 @@
 							</ul>
 						</div>
 						<div style="flex-basis: 50%; text-align: center;">
-							<img src="/images/myphoto.jpg" style="width: 100%; max-width: 300px;" alt="Image representing ChatGPT">
+							<img src="/images/myphoto.jpg" style="width: 100%; max-width: 300px;">
 						</div>
 					</div>
 				</section>
@@ -111,6 +201,41 @@
 						</div>
 					</div>
 				</section>
+				<section>
+					<div class="tree">
+						<ul>
+							<li>
+								<a href="#">Медленное приложение</a>
+								<ul>
+									<li>
+										<a href="#">Проблемы на стороне клиента</a>
+									</li>
+									<li>
+										<a href="#">Проблемы на стороне сервера</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Проблемы на стороне клиента</h3>
+					<ul style="font-size: 28px">
+						<li >Неоптимизированный или сложный JavaScript, который замедляет загрузку страницы или рендеринг элементов на странице.</li>
+						<li class="fragment" >Излишне объемные изображения или медиафайлы, которые замедляют загрузку страницы.</li>
+						<li class="fragment">Неоптимизированный CSS, который замедляет отображение страницы.</li>
+						<li class="fragment">Утечки памяти на стороне клиента, которые замедляют работу приложения со временем.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Проблемы на стороне сервера</h3>
+					<ul style="font-size: 28px">
+						<li> Неэффективные запросы к базе данных</li>
+						<li>Недостаток ресурсов сервера</li>
+						<li>Плохо сконфигурированный или перегруженный веб-сервер</li>
+						<li>Утечки памяти на стороне сервера, которые могут замедлять приложение со временем.</li>
+					</ul>
+				</section>
 				<section id="fragment2">
 					<div class="message-wrapper">
 						<div class="message sent">
@@ -120,7 +245,7 @@
 							<div>
 								<div class="sender">QA</div>
 								<div class="content">
-									<span>У меня плохие новости, у меня тоже зависает при (какой-то сценарий)</span>
+									<span>У меня плохие новости, у меня тоже медленно работает на главной странице</span>
 								</div>
 							</div>
 						</div>
@@ -131,19 +256,40 @@
 							<div>
 								<div class="sender">Dev</div>
 								<div class="content">
-									<span> У меня здесь все работает отлично. Возможно, у вас проблема с вашим окружением, пробовали кэш чистит?</span>
+									<span> Как это медленно?</span>
+								</div>
+							</div>
+						</div>
+						<div class="message sent">
+							<div class="avatar">
+								<img src="/images/qa.png" alt="Получатель">
+							</div>
+							<div>
+								<div class="sender">QA</div>
+								<div class="content">
+									<span>Создаю таску, и там подробно опишу!</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
 				<section>
-					<p>А мы не попробовали!</p>
-					<p>*ирония*</p>
+					<h3>А что писать в таске?</h3>
 				</section>
 				<section>
-					<р1>Что такое медленное приложение?</р1>
-					<p>*ирония*</p>
+					<h3>Шаг 0 открываем консоль</h3>
+					<p> Перейдем на вкладку нетворк</p>
+<!--					1. Медленные сетевые запросы: Если сетевой запрос занимает слишком много времени, это может замедлить загрузку веб-страницы. Во вкладке "Network" вы можете увидеть, какие запросы занимают много времени, чтобы помочь определить проблемные места.-->
+
+<!--					2. Загрузка излишних ресурсов: Если ваше приложение загружает больше данных, чем необходимо (например, большие изображения или ненужные файлы JavaScript), это может замедлить время загрузки страницы.-->
+
+<!--					3. Запросы, закончившиеся с ошибками: Если какие-либо запросы завершились ошибкой (например, HTTP статус коды 4xx или 5xx), это может указывать на проблемы, которые могут негативно сказаться на функциональности и производительности приложения.-->
+
+<!--					4. Проблемы с кешированием: Если ресурсы не кэшируются правильно, браузер будет загружать их с сервера при каждом новом запросе, что может увеличивать время загрузки страницы и нагрузку на сервер.-->
+
+<!--					5. Повторяющиеся или ненужные запросы: Если страница делает одинаковые запросы к одному и тому же ресурсу, или делает запросы к ресурсам, которые ей не нужны, это может замедлить время загрузки и создать ненужную нагрузку на сервер.-->
+
+<!--					Все эти проблемы могут быть идентифицированы и анализированы с помощью вкладки "Network" в инструментах разработчика браузера.-->
 				</section>
 			</div>
 		</div>
